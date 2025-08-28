@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">30 Days App</string>
+    <string name="recipe_name_1">Oatmeal porridge with fruits</string>
+    <string name="recipe_name_2">Bowl broth cream</string>
+    <string name="recipe_name_3">Greek salad</string>
+    <string name="recipe_name_4">Meat casserole</string>"
+    <string name="recipe_name_5">Meat broth</string>
+    <string name="recipe_name_6">Baked fish with vegetables</string>
+    <string name="recipe_name_7">Cheesecake with cherry</string>
+    <string name="recipe_name_8">Cream of mushroom soup</string>
+    <string name="recipe_name_9">Lamb stew with vegetables</string>
+    <string name="recipe_name_10">Pancakes with fruit</string>
+    <string name="recipe_name_11">Omelette with fresh herbs</string>
+    <string name="recipe_name_12">Borsch</string>
+    <string name="recipe_name_13">Rib beef grill</string>
+    <string name="recipe_name_14">Pizza with tomatoes</string>
+    <string name="recipe_name_15">Tortilla </string>
+    <string name="recipe_name_16">Wrap, Burrito, Shawarma</string>
+    <string name="recipe_name_17">Cheese toast</string>
+    <string name="recipe_name_18">Tomato soup</string>
+    <string name="recipe_name_19">Potato soup</string>
+    <string name="recipe_name_20">Cheese fried chicken</string>
+    <string name="recipe_name_21">Turkish pide</string>
+    <string name="recipe_name_22">Turkish delight</string>
+    <string name="recipe_name_23">Italian pasta Penne</string>
+    <string name="recipe_name_24">Spaghetti with tomato sauce</string>
+    <string name="recipe_name_25">Smoothie from rapsberries</string>
+    <string name="recipe_name_26">Pumpkin soupe</string>
+    <string name="recipe_name_27">Croissants</string>
+    <string name="recipe_name_28">Chocolate cake</string>
+    <string name="recipe_name_29">Grilled chicken</string>
+    <string name="recipe_name_30">Chocolate doughnut</string>
+</resources>

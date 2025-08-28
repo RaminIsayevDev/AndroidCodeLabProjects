@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Art Space</string>
+    <string name='BMW_title'>BMW M3</string>
+    <string name='paris_title'>Night Paris</string>
+    <string name='Porsche_title'>Porsche 911 and Horse</string>
+    <string name='BMW_artist'>Pinterest</string>
+    <string name='paris_artist'>Pinterest</string>
+    <string name='Porsche_artist'>Pinterest</string>
+</resources>
