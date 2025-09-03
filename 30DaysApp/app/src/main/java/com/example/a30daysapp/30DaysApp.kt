@@ -2,6 +2,9 @@ package com.example.a30daysapp
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -43,6 +46,12 @@ fun RecipeItem(modifier: Modifier = Modifier, recipe: Recipe) {
         Column(
             modifier = Modifier
                 .padding(dimensionResource(R.dimen.card_padding))
+                .animateContentSize(
+                    animationSpec = spring(
+                        dampingRatio = Spring.DampingRatioNoBouncy,
+                        stiffness = Spring.StiffnessLow
+                    )
+                )
         ) {
             Text(
                 text = stringResource(recipe.name),
@@ -74,7 +83,7 @@ fun RecipeItem(modifier: Modifier = Modifier, recipe: Recipe) {
             ) {
                 Spacer(modifier = Modifier.weight(4f))
 
-                RecipeButton(expanded = expanded, onClick = { expanded = !expanded }, modifier = Modifier.weight(2f))
+                RecipeButton(expanded = expanded, onClick = { expanded = !expanded }, modifier = Modifier.weight(2.5f))
             }
 
         }
