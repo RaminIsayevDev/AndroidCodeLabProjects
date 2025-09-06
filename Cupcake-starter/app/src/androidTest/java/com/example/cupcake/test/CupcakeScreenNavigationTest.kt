@@ -30,6 +30,51 @@ class CupcakeScreenNavigationTest {
 
     @Test
     fun cupcakeNavHost_verifyStartDestination() {
-        assertEquals(CupcakeScreen.Start.name, navController.currentBackStackEntry?.destination?.route)
+        navController.assertCurrentRouteName(CupcakeScreen.Start.name)
+    }
+
+    @Test
+    fun cupcakeNavHost_verifyBackNavigationNotShownOnStartOrderScreen() {
+        val backText = composeTestRule.activity.getString(com.example.cupcake.R.string.back_button)
+        composeTestRule.onNodeWithContentDescription(backText).assertDoesNotExist()
+    }
+
+    @Test
+    fun cupcakeNavHost_clickOneCupcake_navigatesToSelectFlavorScreen(){
+        composeTestRule.onNodeWithStringId(com.example.cupcake.R.string.one_cupcake).performClick()
+        navController.assertCurrentRouteName(CupcakeScreen.Flavor.name)
+    }
+
+    private fun navigateToFlavorScreen() {
+        composeTestRule.onNodeWithStringId(com.example.cupcake.R.string.one_cupcake)
+            .performClick()
+        composeTestRule.onNodeWithStringId(com.example.cupcake.R.string.chocolate)
+            .performClick()
+    }
+
+    private fun navigateToPickupScreen() {
+        navigateToFlavorScreen()
+        composeTestRule.onNodeWithStringId(R.string.next)
+            .performClick()
+    }
+
+    private fun navigateToSummaryScreen() {
+        navigateToPickupScreen()
+        composeTestRule.onNodeWithText(getFormattedDate())
+            .performClick()
+        composeTestRule.onNodeWithStringId(R.string.next)
+            .performClick()
+    }
+
+    private fun performNavigateUp() {
+        val backText = composeTestRule.activity.getString(R.string.back_button)
+        composeTestRule.onNodeWithContentDescription(backText).performClick()
+    }
+
+    private fun getFormattedDate(): String {
+        val calendar = Calendar.getInstance()
+        calendar.add(java.util.Calendar.DATE, 1)
+        val formatter = SimpleDateFormat("E MMM d", Locale.getDefault())
+        return formatter.format(calendar.time)
     }
 }
