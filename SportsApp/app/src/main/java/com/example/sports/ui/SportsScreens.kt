@@ -16,6 +16,7 @@
 
 package com.example.sports.ui
 
+import android.app.Activity
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -25,11 +26,15 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.calculateEndPadding
 import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
@@ -56,6 +61,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -342,6 +348,45 @@ private fun SportsDetail(
     }
 }
 
+@Composable
+private fun SportsListAndDetails(
+    sportsUiState: SportsUiState,
+    onSportCardPressed: (Sport) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val lists = LocalSportsDataProvider.getSportsData()
+    Row(modifier = modifier) {
+        LazyColumn(
+            contentPadding = WindowInsets.statusBars.asPaddingValues(),
+            modifier = Modifier
+                .weight(1f),
+            verticalArrangement = Arrangement.spacedBy(
+                dimensionResource(R.dimen.sports_list_item_vertical_spacing)
+            )
+        ) {
+            items(lists, key = { sport -> sport.id }) { sport ->
+                SportsListItem(
+                    sport = sport,
+                    onItemClick = {
+                        onSportCardPressed(sport)
+                    }
+                )
+            }
+        }
+        val activity = (LocalContext.current as Activity)
+        SportsDetail(
+            selectedSport = sportsUiState.currentSport,
+            onBackPressed = { activity.finish() },
+            modifier = Modifier,
+            contentPadding = PaddingValues(
+                horizontal = dimensionResource(R.dimen.padding_medium)
+            )
+        )
+    }
+}
+
+
+/*
 @Preview
 @Composable
 fun SportsListItemPreview() {
@@ -363,5 +408,13 @@ fun SportsListPreview() {
                 onClick = {},
             )
         }
+    }
+}
+*/
+@Preview
+@Composable
+fun SportsAppPreview() {
+    SportsTheme {
+        SportsApp()
     }
 }
