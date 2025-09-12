@@ -1,0 +1,67 @@
+<resources>
+    <string name="app_name">MyBaku</string>
+    <string name="botanicalGarden">Mərkəzi Nəbatat Bağı</string>
+    <string name="botanicalGardenDescription">
+        Public legal entity under the authority of the Head of the Baku City Executive Power. The Prime Minister of the Republic of Azerbaijan signed Resolution No. 5 on January 7, 2022, regarding the establishment of the Central Botanical Garden as a public legal entity and its transfer to the authority of the Head of the Baku City Executive Power.
+        Proposals to establish a Botanical Garden in Baku were first put forward in the 1930s. At that time, Baku, as a major oil industry and the center of the republic, needed to be improved and greened.
+    </string>
+    <string name="dadagorgudPark">Dədə Qorqud parkı</string>
+    <string name="dadagorgudParkDescription">
+        The park is located in the Narimanov district of Baku. It is located next to ADA University and Baku Zoo. Opened in 2013 on the site of a former children’s railway, Dede Gorgud Park is Baku’s second-largest green space, spanning 6 hectares. It’s a serene escape in the heart of the city, blending nature, culture, and leisure.
+    </string>
+    <string name="nizamiPark">Nizami Gencevi Park</string>
+    <string name="nizamiParkDescription">
+        The Nizami Park (Azerbaijani: Nizami parkı) is one of the oldest parks in Baku, the capital of Azerbaijan. It is located in the Khatai district of the city on the territory of the Villa Petrolea, a residential settlement built by the Nobel brothers at the end of the 19th century for the employees of their company on the border of the Black City in the suburbs of Baku. The total area of the park is 13.6 hectares. This park, in an industrial landscape located on a vast territory, had a positive impact on the gardening architecture of Absheron. After 1920, the former garden of the Villa Petrolea was named after Lunacharsky, later - “Rote-Fane”, in honour of the German newspaper with the same name, and later was named after Nizami Ganjavi
+    </string>
+    <string name="merkeziPark">Merkezi Park</string>
+    <string name="merkeziParkDescription">
+        A park in Baku, the capital of Azerbaijan. Located in the Old Soviet neighborhood, on Abdulla Shaig, Nariman Narimanov, and Mirza Agha Aliyev streets, the first part of this park was inaugurated on May 22, 2019. The park was designed by Austrian architect Jans Hoffman.
+    </string>
+
+    <string name="mall28">28 Mall</string>
+    <string name="mall28Description">
+        A shopping mall located on Azadlig Avenue, near the 28 May metro station. The opening ceremony took place on September 15, 2012. It was claimed to be the largest shopping mall in Baku when it was first established. According to TripAdvisor, it attracts more than 1 million visitors per month. There are more than 70 international and local brand stores, 16 restaurants, 15 kiosks, a cinema and a children\'s entertainment center. There is a 350-space parking lot
+    </string>
+    <string name="crescentMall">Crescent Mall</string>
+    <string name="crescentMallDescription">
+        Crescent Mall is not just a place for shopping, but a real center of city life. It brings together more than 100 world brands, many of which are presented in Azerbaijan for the first time, such as Zara Home, Penelope, Superstep, Gant and Furla.
+    </string>
+    <string name="denizMall">Deniz Mall</string>
+    <string name="denizMallDescription">
+        An architectural gem and one of the largest shopping and entertainment centers in Baku! Situated on the shores of the Caspian Sea, this unique complex was designed in the shape of an eight-pointed star, the symbol of Azerbaijan, and resembles a blossoming lotus flower.
+        Dəniz Mall is not just a place for shopping, but a real center of attraction for the whole family, where everyone will find something to do to their liking.
+    </string>
+    <string name="ganjlikMall">Gənclik Mall</string>
+    <string name="ganjlikMallDescription">
+        Ganjlik Mall is a shopping mall located on Fatali Khan Khoyski Street, near the Ganjlik metro station. One of the largest shopping malls in Azerbaijan, Ganjlik Mall houses many famous clothing brands, as well as various cafes and restaurants.
+    </string>
+    <string name="portBakuMall">Port Baku Mall</string>
+    <string name="portBakuMallDescription">
+        One of the most prestigious and luxurious shopping centers in Baku, located on Neftchilar Avenue. Port Baku Mall is not just a place for shopping, it is a real symbol of elegance and exclusivity, where the most famous world brands and boutiques are concentrated.
+    </string>
+
+    <string name="qala">Qala</string>
+    <string name="qalaDescription">
+        A strategically important point (city, building) designed for long-term perimeter defense, with a permanent garrison, weapons, and supplies, and independently controlled.
+        In primitive communal society, the first fortresses were in the form of fortified settlements. These settlements were surrounded by earthen embankments, wooden, brick, stone, etc. walls. Later, deep ditches were dug around the fences, usually filled with water. The improvement of construction work made it possible to build square or circular tower-shaped walls around ancient cities. The height of the walls reached 9–10 m, and in some cases 30 m. The thickness of the walls was 1/3 of their height.
+    </string>
+    <string name="bayragMeydani">Dövlət Bayrağı Meydanı</string>
+    <string name="bayragMeydaniDescription">
+        A memorial monument and recreation park located in the Bayil area of Baku. The square was inaugurated on September 1, 2010. In 2024, the installation of a new flagpole was carried out and a new flagpole was erected. The square was reopened on November 8, 2024. Since November 2024, the world\'s largest flag has been flying in this square.
+    </string>
+    <string name="shirvanshaxlarSarayi">Şirvanşahlar sarayı</string>
+    <string name="shirvanshaxlarSarayiDescription">
+        The former residence of the rulers of the Shirvanshahs in Baku. In addition to the palace, the complex includes the Divankhana, the Shirvanshahs\' Mausoleum, the Shah Mosque, the Palace Bath, the hunting lodge, the tomb of the palace scholar Seyid Yahya Bakuvi, and the remains of the Keygubad Mosque.
+        The palace complex was built from the 13th to the 16th centuries. Some buildings, including the palace, were built in the early 15th century, during the reign of Shirvanshah Khalilullah I. When the Ottoman Empire captured Baku, a palace wall surrounding it from the east and a gate named after Sultan Murad III were built on the palace grounds. The palace has been renovated and restored several times since the 19th century.
+    </string>
+    <string name="qizQalasi">Qız qalası</string>
+    <string name="qizQalasiDescription">
+        Is an ancient architectural monument located in Baku.
+        The tower is a historical monument for defense purposes located in the southeastern part of the ancient fortress walls, near the seaside park (boulevard). This rare monument in the form of a tall tower has many unsolved historical and architectural problems. Its height is 28 m, and the diameter on the first floor is 16.5 m. The thickness of the walls on the first floor reaches 5 m. The interior of the fortress is divided into 8 floors. Each floor is built of hewn stones and covered with a dome-shaped ceiling. The fortress began to operate as a museum in 1964, and in 2000 it was included in the UNESCO World Heritage List
+    </string>
+
+    <string name="baku">Baku, Azerbaijan</string>
+    <string name="bakuDescription">
+        Baku, also known as Greater Baku, is the capital of the Republic of Azerbaijan; it is located on the Absheron Peninsula, on the western coast of the Caspian Sea. It covers an area of ​​2,140 km² and has a population of 2,262,600 as of early 2018. Baku is one of the most attractive and cosmopolitan cities in the world, located at the crossroads of Europe and Asia. Baku city includes 12 administrative districts and 59 settlements. The central part of the city is located in an amphitheater that gradually descends into the Baku Bay. The coastal part of Baku is approximately 28 m below sea level. Oil, gas, and construction materials are extracted from minerals in the Baku region; therapeutic mineral waters are produced. There are many mud volcanoes. The climate is semi-arid and subtropical. The average temperature in January is 3–4 °C, and in July it is 38–42 °C. Annual precipitation is 210 mm. Strong northern winds — the Khazri and southern winds — the Gilavar are characteristic of Baku.
+    </string>
+</resources>
