@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -26,6 +27,7 @@ import com.example.mybaku.ui.theme.epundaslab
 @Composable
 fun MainCityScreen(
     uiState: UiState,
+    nextButtonClicked: () -> Unit,
     modifier: Modifier
 ) {
     val scrollState = rememberScrollState()
@@ -49,6 +51,13 @@ fun MainCityScreen(
             modifier = Modifier
                 .padding(dimensionResource(R.dimen.text_body_padding)),
         )
+        Button(
+            onClick = { nextButtonClicked },
+            enabled = true,
+            modifier = Modifier
+        ) {
+            Text("Next")
+        }
     }
 }
 
@@ -57,6 +66,7 @@ fun MainCityScreen(
 fun MainCityScreenPreview() {
     MainCityScreen(
         uiState = UiState(),
+        nextButtonClicked = {/* TODO: implement onClick functionality */},
         modifier = Modifier
     )
 }
