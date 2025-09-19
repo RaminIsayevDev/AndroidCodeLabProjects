@@ -9,6 +9,7 @@ import com.example.mybaku.data.local.LocalShoppingcenterDataProvider
 import kotlinx.coroutines.flow.MutableStateFlow
 import com.example.mybaku.ui.UiState
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.update
 
 class MyBakuViewModel : ViewModel() {
     private val _uiState = MutableStateFlow(UiState())
@@ -31,5 +32,8 @@ class MyBakuViewModel : ViewModel() {
     }
 
     // Here we'll add more functions to update the state
+    fun subCategoryUpdate(skeleton: Skeleton) {
+        _uiState.update { currentState -> currentState.copy(currentSubCategory = skeleton) }
+    }
 
 }

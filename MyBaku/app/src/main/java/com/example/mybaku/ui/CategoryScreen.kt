@@ -1,11 +1,9 @@
 package com.example.mybaku.ui
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -18,10 +16,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.mybaku.data.Category
 import com.example.mybaku.data.categories
+import com.example.mybaku.ui.theme.epundaslab
 
 @Composable
 fun CategoryScreen(
@@ -34,14 +35,14 @@ fun CategoryScreen(
         items(categories) { category ->
             Card(
                 modifier = Modifier
-                    .padding(14.dp)
+                    .padding(12.dp)
                     .fillMaxWidth(),
                 onClick = { onCategoryClicked(category) },
             ) {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(18.dp),
+                        .padding(16.dp),
 
                 ) {
                     Icon(
@@ -49,7 +50,7 @@ fun CategoryScreen(
                         contentDescription = null,
                         modifier = Modifier
                             .align(Alignment.CenterVertically)
-                            .size(48.dp)
+                            .size(56.dp)
                     )
                     Spacer(
                         modifier = Modifier
@@ -57,7 +58,10 @@ fun CategoryScreen(
                     )
                     Text(
                         text = category.name,
-                        modifier = Modifier.align(Alignment.CenterVertically)
+                        modifier = Modifier.align(Alignment.CenterVertically),
+                        fontFamily = epundaslab,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp
                     )
                     Spacer(
                         modifier = Modifier

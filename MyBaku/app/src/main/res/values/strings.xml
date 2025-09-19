@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">MyBaku</string>
+    <string name="start">Baku</string>
+    <string name="categories">Categories</string>
+    <string name="attractions">Attractions</string>
+    <string name="shoppingcenters">Shopping Centers</string>
+    <string name="parks">Parks</string>
+    <string name="details">Details Screen</string>
+
     <string name="botanicalGarden">Mərkəzi Nəbatat Bağı</string>
     <string name="botanicalGardenDescription">
         Public legal entity under the authority of the Head of the Baku City Executive Power. The Prime Minister of the Republic of Azerbaijan signed Resolution No. 5 on January 7, 2022, regarding the establishment of the Central Botanical Garden as a public legal entity and its transfer to the authority of the Head of the Baku City Executive Power.
