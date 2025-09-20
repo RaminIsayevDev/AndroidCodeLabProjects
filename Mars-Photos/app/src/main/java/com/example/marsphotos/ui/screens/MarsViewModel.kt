@@ -20,10 +20,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.marsphotos.model.MarsPhoto
 import com.example.marsphotos.network.MarsApi
 import kotlinx.coroutines.launch
+import retrofit2.HttpException
 import java.io.IOException
 
+/**
+ * UI state for the Home screen
+ */
 sealed interface MarsUiState {
     data class Success(val photos: String) : MarsUiState
     object Error : MarsUiState
@@ -32,7 +37,7 @@ sealed interface MarsUiState {
 
 class MarsViewModel : ViewModel() {
     /** The mutable State that stores the status of the most recent request */
-    var marsUiState: String by mutableStateOf(MarsUiState.Loading)
+    var marsUiState: MarsUiState by mutableStateOf(MarsUiState.Loading)
         private set
 
     /**
@@ -48,12 +53,16 @@ class MarsViewModel : ViewModel() {
      */
     fun getMarsPhotos() {
         viewModelScope.launch {
-             marsUiState = try {
+            marsUiState = MarsUiState.Loading
+            marsUiState = try {
                 val listResult = MarsApi.retrofitService.getPhotos()
-                marsUiState = MarsUiState.Success(listResult)
+                MarsUiState.Success(
+                    "Success: ${listResult.size} Mars photos retrieved"
+                )
             } catch (e: IOException) {
-                TODO("Not yet implemented")
-                marsUiState = MarsUiState.Error
+                MarsUiState.Error
+            } catch (e: HttpException) {
+                MarsUiState.Error
             }
         }
     }
