@@ -10,7 +10,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.bookshelf.FakePreviewData.bookItem1
-import com.example.bookshelf.FakePreviewData.model.Book
+import com.example.bookshelf.data.model.Book
 
 @Composable
 fun BookItemScreen(book: Book, modifier: Modifier = Modifier) {

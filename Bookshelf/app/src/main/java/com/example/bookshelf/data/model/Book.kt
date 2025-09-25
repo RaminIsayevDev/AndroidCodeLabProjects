@@ -1,8 +1,9 @@
-package com.example.bookshelf.FakePreviewData.model
+package com.example.bookshelf.data.model
 
 import androidx.compose.runtime.Composable
+import kotlinx.serialization.Serializable
 import java.lang.reflect.Modifier
-
+@Serializable
 data class Book(
     val id: String,
     val title: String,

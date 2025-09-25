@@ -1,6 +1,6 @@
 package com.example.bookshelf.FakePreviewData
 
-import com.example.bookshelf.FakePreviewData.model.Book
+import com.example.bookshelf.data.model.Book
 
 fun getMockBooks(): List<Book> {
     return listOf(

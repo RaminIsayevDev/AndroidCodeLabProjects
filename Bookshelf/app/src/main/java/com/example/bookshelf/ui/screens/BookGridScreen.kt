@@ -1,8 +1,7 @@
 package com.example.bookshelf.ui.screens
 
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -16,22 +15,22 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.example.bookshelf.FakePreviewData.model.Book
+import com.example.bookshelf.data.model.Book
+import com.example.bookshelf.R
 
 @Composable
 fun BooksGridScreen(books: List<Book>, modifier: Modifier) {
     LazyVerticalGrid(
         columns = GridCells.Adaptive(150.dp),
-        modifier = modifier,
-        contentPadding = PaddingValues(5.dp),
+        modifier = modifier
+            .fillMaxSize()
+            .padding(12.dp),
     ) {
         items(items = books, key = { book -> book.id }) {
             book -> BookItemCard(
                 book,
                 modifier = Modifier
-                    .padding(4.dp)
-                    .fillMaxWidth()
-                    .aspectRatio(1.5f)
+                    .padding(3.dp)
             )
         }
     }
@@ -40,19 +39,18 @@ fun BooksGridScreen(books: List<Book>, modifier: Modifier) {
 @Composable
 fun BookItemCard(book: Book, modifier: Modifier) {
     Card(
-        modifier = modifier
-            .padding(5.dp)
-            .fillMaxWidth(),
+        modifier = modifier.aspectRatio(2f / 3f), // Maintain a 2:3 aspect ratio (width:height)
         elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
     ) {
         AsyncImage(
             model = ImageRequest.Builder(context = LocalContext.current)
-                .data(book.thumbnail?.replace("http:", "https:"))
+                .data(if (book.thumbnail != null) book.thumbnail.replace("http:", "https:") else R.drawable.errorjpg)
                 .crossfade(true)
-                .build(),
+                .build()
+            ,
             contentDescription = null,
             contentScale = ContentScale.Crop,
-            modifier = modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxSize() // Fill the card bounds
         )
     }
 }

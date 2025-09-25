@@ -126,7 +126,7 @@ fun ErrorScreenPreview() {
 @Composable
 fun PhotosGridScreenPreview() {
     MarsPhotosTheme {
-        val mockData = List(10) { MarsPhoto("$it", "") }
+        List(10) { MarsPhoto("$it", "") }
         ResultScreen(stringResource(R.string.placeholder_success))
     }
 }
