@@ -15,7 +15,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.example.bookshelf.data.model.Book
+import com.example.bookshelf.data.models.Book
 import com.example.bookshelf.R
 
 @Composable

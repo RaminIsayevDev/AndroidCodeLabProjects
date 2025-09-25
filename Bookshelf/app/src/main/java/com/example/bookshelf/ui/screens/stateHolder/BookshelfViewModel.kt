@@ -11,7 +11,8 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.bookshelf.BookshelfApplication
 import com.example.bookshelf.data.BookshelfBooksRepository
-import com.example.bookshelf.data.model.Book
+import com.example.bookshelf.data.models.BookItem
+import com.example.bookshelf.data.models.BooksApiResponse
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.io.IOException
@@ -21,18 +22,34 @@ class BookshelfViewModel(private val bookshelfBooksRepository: BookshelfBooksRep
         private set
 
     init {
-        getBooks()
+        getItems()
     }
 
-    fun getBooks() {
+    fun getItems() {
         viewModelScope.launch {
             booksUiState = BookUiState.Loading
+            val thumbnailList = mutableListOf<String>()
+
             booksUiState = try {
-                BookUiState.Success(bookshelfBooksRepository.getBooks())
+                BookUiState.Success(bookshelfBooksRepository.getApiResponse())
             } catch (e: IOException) {
                 BookUiState.Error
             } catch (e: HttpException) {
                 BookUiState.Error
+            }
+
+            val currentUiState = booksUiState
+
+            if (currentUiState is BookUiState.Success) {
+                for (book in currentUiState.books.items) {
+                    val bookDetailsItem = bookshelfBooksRepository.getIndividualBook(book.id)
+                    thumbnailList.add(bookDetailsItem.volumeInfo.imageLinks?.thumbnail.toString())
+                }
+
+                booksUiState = BookUiState.Success(
+                    books = currentUiState.books,
+                    thumbnails = thumbnailList
+                )
             }
         }
     }
@@ -50,7 +67,11 @@ class BookshelfViewModel(private val bookshelfBooksRepository: BookshelfBooksRep
 }
 
 sealed interface BookUiState {
-    data class Success(val books: List<Book>) : BookUiState
+    data class Success(
+        val books: BooksApiResponse,
+        val currentBook: BookItem? = null,
+        val thumbnails: MutableList<String>? = null
+    ) : BookUiState
     object Error : BookUiState
     object Loading : BookUiState
 }
