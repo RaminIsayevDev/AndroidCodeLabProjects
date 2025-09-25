@@ -8,21 +8,23 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.bookshelf.FakePreviewData.bookItem1
-import com.example.bookshelf.FakePreviewData.getMockBooks
 import com.example.bookshelf.ui.screens.stateHolder.BookUiState
 
 @Composable
 fun BookshelfScreen(navController: NavHostController, bookUiState: BookUiState, modifier: Modifier, contentPadding: PaddingValues) {
     NavHost(navController = navController, startDestination = "BooksGridScreen", modifier = modifier) {
         composable(route = "BooksGridScreen") {
-            BooksGridScreen(books = bookUiState.books, modifier = modifier
-                .padding(contentPadding)
-                .fillMaxSize()
-            )
+            if (bookUiState is BookUiState.Success) {
+                BooksGridScreen(books = bookUiState.books.items, modifier = modifier
+                    .padding(contentPadding)
+                    .fillMaxSize()
+                )
+            }
         }
         composable(route = "BookItemScreen") {
-            BookItemScreen(book = bookItem1, modifier = modifier.padding(contentPadding))
+            if (bookUiState is BookUiState.Success) {
+                BookItemScreen(book = bookUiState.currentBook!!, modifier = modifier.padding(contentPadding))
+            }
         }
     }
 }

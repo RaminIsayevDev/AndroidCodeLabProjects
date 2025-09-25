@@ -3,7 +3,7 @@ package com.example.bookshelf.data
 import com.example.bookshelf.network.BookshelfApiService
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
-import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import retrofit2.converter.kotlinx.serialization.asConverterFactory // Updated import
 import kotlinx.serialization.ExperimentalSerializationApi
 import retrofit2.Retrofit
 import kotlin.getValue
@@ -17,7 +17,8 @@ class DefaultAppContainer : AppContainer {
 
     @OptIn(ExperimentalSerializationApi::class)
     private val retrofit = Retrofit.Builder()
-        .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
+        // Ensure Json instance is configured as needed, e.g., with ignoreUnknownKeys
+        .addConverterFactory(Json { ignoreUnknownKeys = true }.asConverterFactory("application/json".toMediaType())) // Updated usage
         .baseUrl(baseUrl)
         .build()
 

@@ -15,11 +15,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.example.bookshelf.data.models.Book
 import com.example.bookshelf.R
+import com.example.bookshelf.data.models.BookItem
 
 @Composable
-fun BooksGridScreen(books: List<Book>, modifier: Modifier) {
+fun BooksGridScreen(books: List<BookItem>, modifier: Modifier) {
     LazyVerticalGrid(
         columns = GridCells.Adaptive(150.dp),
         modifier = modifier
@@ -37,14 +37,14 @@ fun BooksGridScreen(books: List<Book>, modifier: Modifier) {
 }
 
 @Composable
-fun BookItemCard(book: Book, modifier: Modifier) {
+fun BookItemCard(book: BookItem, modifier: Modifier) {
     Card(
         modifier = modifier.aspectRatio(2f / 3f), // Maintain a 2:3 aspect ratio (width:height)
         elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
     ) {
         AsyncImage(
             model = ImageRequest.Builder(context = LocalContext.current)
-                .data(if (book.thumbnail != null) book.thumbnail.replace("http:", "https:") else R.drawable.errorjpg)
+                .data(if (book.volumeInfo.imageLinks?.thumbnail != null) book.volumeInfo.imageLinks.thumbnail.replace("http:", "https:") else R.drawable.errorjpg)
                 .crossfade(true)
                 .build()
             ,

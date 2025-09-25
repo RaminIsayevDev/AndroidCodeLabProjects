@@ -12,15 +12,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
 import com.example.bookshelf.ui.screens.BookshelfScreen
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.bookshelf.ui.screens.stateHolder.BookshelfViewModel
 
 @Composable
 fun BookshelfApp(modifier: Modifier = Modifier) {
     val bookShelfViewModel: BookshelfViewModel = viewModel(factory = BookshelfViewModel.Factory)
-    val booksUiState = bookShelfViewModel.booksUiState.collectAsState().value
+    val booksUiState = bookShelfViewModel.booksUiState
     Scaffold(modifier = modifier.fillMaxSize(), topBar = { BookshelfTopAppBar(modifier) }) { contentPadding ->
 
         val navController = rememberNavController()

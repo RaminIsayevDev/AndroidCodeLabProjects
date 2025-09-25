@@ -54,18 +54,18 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation("androidx.navigation:navigation-compose:2.9.4")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.1") // Will address this version later
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.3")
     implementation("com.google.code.gson:gson:2.13.2")
 
     // Coil
     implementation("io.coil-kt:coil-compose:2.7.0")
     // Retrofit
-    implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:1.0.0")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
-
-    implementation(libs.converter.kotlinx.serialization)
-    implementation(libs.retrofit2.kotlinx.serialization.converter)
+    // Use the official Square converter
+    implementation(libs.converter.kotlinx.serialization) 
+    // Removed: implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:1.0.0")
+    // Removed: implementation(libs.retrofit2.kotlinx.serialization.converter)
 
 
 
