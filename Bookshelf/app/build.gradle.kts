@@ -62,6 +62,9 @@ dependencies {
     implementation("io.coil-kt:coil-compose:2.7.0")
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    // Use the Gson Converter
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
     // Use the official Square converter
     implementation(libs.converter.kotlinx.serialization) 
     // Removed: implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:1.0.0")

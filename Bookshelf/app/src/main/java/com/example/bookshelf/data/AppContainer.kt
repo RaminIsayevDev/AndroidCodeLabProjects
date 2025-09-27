@@ -6,6 +6,7 @@ import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.converter.kotlinx.serialization.asConverterFactory // Updated import
 import kotlinx.serialization.ExperimentalSerializationApi
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import kotlin.getValue
 
 interface AppContainer {
@@ -18,7 +19,7 @@ class DefaultAppContainer : AppContainer {
     @OptIn(ExperimentalSerializationApi::class)
     private val retrofit = Retrofit.Builder()
         // Ensure Json instance is configured as needed, e.g., with ignoreUnknownKeys
-        .addConverterFactory(Json { ignoreUnknownKeys = true }.asConverterFactory("application/json".toMediaType())) // Updated usage
+        .addConverterFactory(GsonConverterFactory.create())
         .baseUrl(baseUrl)
         .build()
 
