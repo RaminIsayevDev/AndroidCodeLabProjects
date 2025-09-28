@@ -76,15 +76,21 @@ fun ItemEntryScreen(
         ItemEntryBody(
             itemUiState = viewModel.itemUiState,
             onItemValueChange = viewModel::updateUiState,
-            onSaveClick = { coroutineScope.launch {
-                viewModel.saveItem()
-                navigateBack()
-            } },
+            onSaveClick = {
+                // Note: If the user rotates the screen very fast, the operation may get cancelled
+                // and the item may not be saved in the Database. This is because when config
+                // change occurs, the Activity will be recreated and the rememberCoroutineScope will
+                // be cancelled - since the scope is bound to composition.
+                coroutineScope.launch {
+                    viewModel.saveItem()
+                    navigateBack()
+                }
+            },
             modifier = Modifier
                 .padding(
                     start = innerPadding.calculateStartPadding(LocalLayoutDirection.current),
+                    top = innerPadding.calculateTopPadding(),
                     end = innerPadding.calculateEndPadding(LocalLayoutDirection.current),
-                    top = innerPadding.calculateTopPadding()
                 )
                 .verticalScroll(rememberScrollState())
                 .fillMaxWidth()
@@ -100,9 +106,9 @@ fun ItemEntryBody(
     modifier: Modifier = Modifier
 ) {
     Column(
-        verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_large)),
-        modifier = modifier.padding(dimensionResource(id = R.dimen.padding_medium))
-        ) {
+        modifier = modifier.padding(dimensionResource(id = R.dimen.padding_medium)),
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_large))
+    ) {
         ItemInputForm(
             itemDetails = itemUiState.itemDetails,
             onValueChange = onItemValueChange,

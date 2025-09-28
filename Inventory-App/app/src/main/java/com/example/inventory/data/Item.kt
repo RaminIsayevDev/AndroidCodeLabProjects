@@ -19,7 +19,6 @@ package com.example.inventory.data
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-
 /**
  * Entity data class represents a single row in the database.
  */
@@ -31,4 +30,3 @@ data class Item(
     val price: Double,
     val quantity: Int
 )
-
