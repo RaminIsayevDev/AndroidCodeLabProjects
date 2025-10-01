@@ -23,13 +23,10 @@ abstract class FlightDatabase : RoomDatabase() {
 
         fun getDatabase(context: Context): FlightDatabase {
             return INSTANCE ?: synchronized(this) {
-                val instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    FlightDatabase::class.java,
-                    "flight_database"
-                ).build()
-                INSTANCE = instance
-                instance
+                Room.databaseBuilder(context, FlightDatabase::class.java, "flight_database")
+                    .createFromAsset("database/flight_search.db")
+                    .build()
+                    .also { INSTANCE = it }
             }
         }
     }

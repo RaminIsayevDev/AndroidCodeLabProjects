@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("org.jetbrains.kotlin.kapt")
 }
 
 android {
@@ -40,8 +41,6 @@ android {
 }
 
 dependencies {
-    val room_version = "2.8.1"
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -50,12 +49,16 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.0")
 
     // Datastore
     implementation("androidx.datastore:datastore-preferences:1.1.7")
 
-    // Room
-    implementation("androidx.room:room-runtime:${room_version}")
+    //Room
+    implementation("androidx.room:room-runtime:${rootProject.extra["room_version"]}")
+    implementation("androidx.core:core-ktx:1.15.0")
+    implementation("androidx.room:room-ktx:${rootProject.extra["room_version"]}")
+    kapt("androidx.room:room-compiler:2.8.1")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
