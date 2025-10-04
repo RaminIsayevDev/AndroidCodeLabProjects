@@ -24,4 +24,7 @@ interface favoriteDao {
     @Query("SELECT * FROM Favorite WHERE departure_code = :departureCode AND destination_code = :destinationCode")
     fun getFavoriteByCodes(departureCode: String, destinationCode: String): Flow<Favorite?>
 
+    @Query("DELETE FROM Favorite WHERE departure_code = :departureCode AND destination_code = :destinationCode")
+    suspend fun deleteByCodes(departureCode: String, destinationCode: String)
+
 }

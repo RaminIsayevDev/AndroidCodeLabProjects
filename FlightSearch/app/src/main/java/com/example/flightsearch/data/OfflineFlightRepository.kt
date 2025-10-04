@@ -2,7 +2,9 @@ package com.example.flightsearch.data
 
 import com.example.flightsearch.data.models.Airport
 import com.example.flightsearch.data.models.Favorite
+import com.example.flightsearch.data.models.Route
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.combine
 
 class OfflineFlightRepository(private val airportDao: airportDao, private val favoriteDao: favoriteDao) : FlightRepository {
     // For airportDao
@@ -20,4 +22,52 @@ class OfflineFlightRepository(private val airportDao: airportDao, private val fa
     override fun getFavoriteByCodes(departureCode: String, destinationCode: String): Flow<Favorite?> = favoriteDao.getFavoriteByCodes(departureCode = departureCode, destinationCode = destinationCode)
     override suspend fun insertFavorite(favorite: Favorite) = favoriteDao.insertFavorite(favorite = favorite)
     override suspend fun deleteFavorite(favorite: Favorite) = favoriteDao.deleteFavorite(favorite = favorite)
+    override suspend fun deleteByCodes(departureCode: String, destinationCode: String) = favoriteDao.deleteByCodes(departureCode, destinationCode)
+
+    // Route
+    override fun getAllRoutes(): Flow<List<Route>> {
+        return airportDao.getAllAirports().combine(favoriteDao.getAllFavorites()) { airports, favorites ->
+            airports.flatMap { departureAirport ->
+                airports.mapNotNull { arrivalAirport ->
+                    if (departureAirport != arrivalAirport) {
+                        val isFavorite = favorites.any {
+                            it.departureCode == departureAirport.code && it.destinationCode == arrivalAirport.code
+                        }
+                        Route(
+                            departAirport = departureAirport,
+                            arriveAirport = arrivalAirport,
+                            isFavorite = isFavorite
+                        )
+                    } else {
+                        null
+                    }
+                }
+            }
+        }
+    }
+
+    override fun getRoutesForAirport(code: String): Flow<List<Route>> {
+        return airportDao.getAllAirports().combine(favoriteDao.getAllFavorites()) { airports, favorites ->
+            val departureAirport = airports.find { it.code == code }
+
+            if (departureAirport != null) {
+                airports.mapNotNull { arrivalAirport ->
+                    if (departureAirport.code != arrivalAirport.code) {
+                        val isFavorite = favorites.any {
+                            it.departureCode == departureAirport.code && it.destinationCode == arrivalAirport.code
+                        }
+                        Route(
+                            departAirport = departureAirport,
+                            arriveAirport = arrivalAirport,
+                            isFavorite = isFavorite
+                        )
+                    } else {
+                        null
+                    }
+                }
+            } else {
+                emptyList()
+            }
+        }
+    }
 }

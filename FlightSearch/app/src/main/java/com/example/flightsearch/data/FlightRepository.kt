@@ -2,11 +2,12 @@ package com.example.flightsearch.data
 
 import com.example.flightsearch.data.models.Airport
 import com.example.flightsearch.data.models.Favorite
+import com.example.flightsearch.data.models.Route
 import kotlinx.coroutines.flow.Flow
 
 interface FlightRepository {
-    // For airportDao
 
+    // For airportDao
     fun getAllAirports(): Flow<List<Airport>>
 
     fun getAirportByCode(code: String): Flow<Airport?>
@@ -26,4 +27,9 @@ interface FlightRepository {
 
     suspend fun insertFavorite(favorite: Favorite)
     suspend fun deleteFavorite(favorite: Favorite)
+    suspend fun deleteByCodes(departureCode: String, destinationCode: String)
+
+    // For Route
+    fun getAllRoutes(): Flow<List<Route>>
+    fun getRoutesForAirport(code: String): Flow<List<Route>>
 }
